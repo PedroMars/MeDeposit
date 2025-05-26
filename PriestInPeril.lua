@@ -126,7 +126,6 @@ local function passo_falarComVozTemploDepoisCerberus()
     pulardialogos()
     return true -- Placeholder
 end
-
 local function passo_voltarParaReiRoald()
     Inventory:DoAction(8007,1,API.OFF_ACT_GeneralInterface_route)
     API.RandomSleep2(7000, 2000, 3000)
@@ -190,7 +189,7 @@ local function passo_matarMongeZamorakEMegastarChave()
     API.DoAction_NPC(0x2a,API.OFF_ACT_AttackNPC_route,{ 1044 },50)
     API.RandomSleep2(4000, 2000, 3000)
     API.DoAction_G_Items1(0x2d,{ 2944 },50);
-    API.RandomSleep2(1000, 1000, 2000)
+    API.RandomSleep2(3000, 1500, 2000)
     API.DoAction_Interface(0x24,0xffffffff,1,1622,22,-1,API.OFF_ACT_GeneralInterface_route)
 
     return true -- Placeholder
@@ -215,39 +214,39 @@ end
 local function passo_encontrarEtrocarChaves()
     print("Passo: Encontrando e trocando as chaves no Mausoléu.")
     API.DoAction_Object2(0x32,API.OFF_ACT_GeneralObject_route0,{ 3496 },50,WPOINT.new(6687,4300,0));
-    API.RandomSleep2(1000, 1000, 2000)
+    API.RandomSleep2(3000, 1500, 2000)
     Inventory:DoAction(2944,0,API.API.OFF_ACT_Bladed_interface_route)
-    API.RandomSleep2(1000, 1000, 2000)
+    API.RandomSleep2(3000, 1500, 2000)
     API.DoAction_Object2(0x24,API.OFF_ACT_GeneralObject_route00,{ 3496 },50,WPOINT.new(6691,4301,0));
     API.DoAction_Object2(0x32,API.OFF_ACT_GeneralObject_route0,{ 3493 },50,WPOINT.new(6681,4306,0));
-    API.RandomSleep2(1000, 1000, 2000)
+    API.RandomSleep2(3000, 1500, 2000)
     Inventory:DoAction(2944,0,API.API.OFF_ACT_Bladed_interface_route)
-    API.RandomSleep2(1000, 1000, 2000)
+    API.RandomSleep2(3000, 1500, 2000)
     API.DoAction_Object2(0x24,API.OFF_ACT_GeneralObject_route00,{ 3493 },50,WPOINT.new(6691,4301,0));
     API.DoAction_Object2(0x32,API.OFF_ACT_GeneralObject_route0,{ 3499 },50,WPOINT.new(6682,4310,0));
-    API.RandomSleep2(1000, 1000, 2000)
+    API.RandomSleep2(3000, 1500, 2000)
     Inventory:DoAction(2944,0,API.API.OFF_ACT_Bladed_interface_route)
-    API.RandomSleep2(1000, 1000, 2000)
+    API.RandomSleep2(3000, 1500, 2000)
     API.DoAction_Object2(0x24,API.OFF_ACT_GeneralObject_route00,{ 3499 },50,WPOINT.new(6691,4301,0));
     API.DoAction_Object2(0x32,API.OFF_ACT_GeneralObject_route0,{ 3494 },50,WPOINT.new(6687,4311,0));
-    API.RandomSleep2(1000, 1000, 2000)
+    API.RandomSleep2(3000, 1500, 2000)
     Inventory:DoAction(2944,0,API.API.OFF_ACT_Bladed_interface_route)
-    API.RandomSleep2(1000, 1000, 2000)
+    API.RandomSleep2(3000, 1500, 2000)
     API.DoAction_Object2(0x24,API.OFF_ACT_GeneralObject_route00,{ 3494 },50,WPOINT.new(6691,4301,0));
     API.DoAction_Object2(0x32,API.OFF_ACT_GeneralObject_route0,{ 3497 },50,WPOINT.new(6691,4310,0));
-    API.RandomSleep2(1000, 1000, 2000)
+    API.RandomSleep2(3000, 1500, 2000)
     Inventory:DoAction(2944,0,API.API.OFF_ACT_Bladed_interface_route)
-    API.RandomSleep2(1000, 1000, 2000)
+    API.RandomSleep2(3000, 1500, 2000)
     API.DoAction_Object2(0x24,API.OFF_ACT_GeneralObject_route00,{ 3497 },50,WPOINT.new(6691,4301,0));
     API.DoAction_Object2(0x32,API.OFF_ACT_GeneralObject_route0,{ 3495 },50,WPOINT.new(6692,4306,0));
-    API.RandomSleep2(1000, 1000, 2000)
+    API.RandomSleep2(3000, 1500, 2000)
     Inventory:DoAction(2944,0,API.API.OFF_ACT_Bladed_interface_route)
-    API.RandomSleep2(1000, 1000, 2000)
+    API.RandomSleep2(3000, 1500, 2000)
     API.DoAction_Object2(0x24,API.OFF_ACT_GeneralObject_route00,{ 3495 },50,WPOINT.new(6691,4301,0));
     API.DoAction_Object2(0x32,API.OFF_ACT_GeneralObject_route0,{ 3498 },50,WPOINT.new(6691,4301,0));
-    API.RandomSleep2(1000, 1000, 2000)
+    API.RandomSleep2(3000, 1500, 2000)
     Inventory:DoAction(2944,0,API.API.OFF_ACT_Bladed_interface_route)
-    API.RandomSleep2(1000, 1000, 2000)
+    API.RandomSleep2(3000, 1500, 2000)
     API.DoAction_Object2(0x24,API.OFF_ACT_GeneralObject_route00,{ 3498 },50,WPOINT.new(6691,4301,0));
     return true -- Placeholder
 end
@@ -255,7 +254,7 @@ end
 local function passo_encherBaldeAguaMurky()
     print("Passo: Enchendo o balde com água murky.")
     Inventory:DoAction(1925,0,API.API.OFF_ACT_Bladed_interface_route)
-    API.RandomSleep2(500, 500, 200)
+    API.RandomSleep2(1000, 1500, 1000)
     API.DoAction_Object2(0x24,API.OFF_ACT_GeneralObject_route00,{ 3485 },50,WPOINT.new(6686,4305,0));
     return true -- Placeholder
 end
@@ -265,16 +264,16 @@ local function passo_voltarParaDrezelComChave()
     print("Passo: Voltando para Drezel com a chave.")
     QUEST.MoveTo(6667, 4310, 0, 5)
     API.DoAction_Object2(0x31,API.OFF_ACT_GeneralObject_route0,{ 3444 },50,WPOINT.new(6669,4311,0))
-    API.RandomSleep2(500, 500, 200)
+    API.RandomSleep2(1000, 1500, 1000)
     API.DoAction_Object2(0x34,API.OFF_ACT_GeneralObject_route0,{ 30575 },50,WPOINT.new(6669,4323,0));
-    API.RandomSleep2(500, 500, 200)
+    API.RandomSleep2(1000, 1500, 1000)
     QUEST.MoveTo(3404, 3486, 0, 5)
     API.DoAction_Object2(0x39,API.OFF_ACT_GeneralObject_route0,{ 30708 },50,WPOINT.new(3404,3485,0));
-    API.RandomSleep2(500, 500, 200)
+    API.RandomSleep2(1000, 1500, 1000)
     API.DoAction_Object2(0x34,API.OFF_ACT_GeneralObject_route0,{ 102044 },50,WPOINT.new(3414,3480,0));
-    API.RandomSleep2(500, 500, 200)
+    API.RandomSleep2(1000, 1500, 1000)
     API.DoAction_Object2(0x34,API.OFF_ACT_GeneralObject_route0,{ 102045 },50,WPOINT.new(3406,3482,0));
-    API.RandomSleep2(1000, 1000, 2000)
+    API.RandomSleep2(3000, 1500, 2000)
     return true -- Placeholder
 end
 
@@ -282,7 +281,7 @@ end
 local function passo_abrirCelaDrezelEFalar()
     print("Passo: Abrindo a cela de Drezel e falando com ele.")
     API.DoAction_Object2(0x29,API.OFF_ACT_GeneralObject_route0,{ 3463 },50,WPOINT.new(3412,3484,0));
-    API.RandomSleep2(500, 500, 200)
+    API.RandomSleep2(1000, 1500, 1000)
     pulardialogos()
     return true -- Placeholder
 end
@@ -290,7 +289,7 @@ end
 local function passo_abencoarAgua()
 print("Passo: Abençoando a água.")
     API.DoAction_Object2(0x29,API.OFF_ACT_GeneralObject_route0,{ 3463 },50,WPOINT.new(3412,3484,0));
-    API.RandomSleep2(500, 500, 200)
+    API.RandomSleep2(1000, 1500, 1000)
     API.DoAction_NPC(0x2c,API.OFF_ACT_InteractNPC_route,{ 1047 },50)
     pulardialogos()
 return true -- Placeholder
@@ -308,7 +307,7 @@ end
 local function passo_falarComDrezelDepoisCaixao()
 print("Passo: Falando com Drezel depois de selar o caixão.")
     API.DoAction_Object2(0x29,API.OFF_ACT_GeneralObject_route0,{ 3463 },50,WPOINT.new(3412,3484,0));
-    API.RandomSleep2(500, 500, 200)
+    API.RandomSleep2(1000, 1500, 1000)
     API.DoAction_NPC(0x2c,API.OFF_ACT_InteractNPC_route,{ 1047 },50)
     pulardialogos()
 return true -- Placeholder
