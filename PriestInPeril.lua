@@ -1,7 +1,5 @@
 local API = require("api")
 
-local Logger = require("ZukLogger")
-
 local QUEST = require("recurso.quest")
 
 -- Função principal que orquestra toda a missão
@@ -33,7 +31,7 @@ function iniciarMissaoAMissingMonk()
     -- Parte 3: Saradomin's Blessing
     if not passo_voltarParaDrezelComChave() then return false end
     if not passo_abrirCelaDrezelEFalar() then return false end
-    if not passo_abençoarAgua() then return false end
+    if not passo_abencoarAgua() then return false end
     if not passo_usarAguaNoCaixao() then return false end
     if not passo_falarComDrezelDepoisCaixao() then return false end
     if not passo_irParaSalaMonumentosFalarDrezel() then return false end
@@ -49,14 +47,6 @@ end
 
 -- PARTE 1: A Missing Monk
 
---[[
-    Objetivo: Falar com o Rei Roald no Palácio de Varrock para iniciar a quest.
-    Ações:
-        - Navegar até o Palácio de Varrock (se não estiver lá).
-        - Clicar no NPC "King Roald".
-        - Selecionar opções de diálogo para iniciar a missão.
-    Retorno: true se bem-sucedido, false caso contrário.
-]]
 
 local function pulardialogos()
     local tentativas_atuais = 0
@@ -82,13 +72,7 @@ local function passo_falarComReiRoaldPrimeiraVez()
     pulardialogos()
 end
 
---[[
-    Objetivo: Ir do Palácio de Varrock até o templo de Paterdomus.
-    Ações:
-        - Sair do portão leste de Varrock.
-        - Seguir o caminho indicado (norte, depois leste na bifurcação).
-    Retorno: true se bem-sucedido, false caso contrário.
-]]
+
 function passo_irParaPaterdomus()
     QUEST.MoveTo(3258, 3440, 0, 5)
     QUEST.MoveTo(3273, 3428, 0, 5)
@@ -182,13 +166,6 @@ function passo_subirAndarSuperiorTemplo()
     return true -- Placeholder
 end
 
---[[
-    Objetivo: Falar com o Drezel preso.
-    Ações:
-        - Clicar no Drezel através das grades.
-        - Progredir no diálogo sobre a situação do templo e o Rio Salve.
-    Retorno: true se bem-sucedido, false caso contrário.
-]]
 function passo_falarComDrezelPreso()
     print("Passo: Falando com o Drezel preso.")
     API.DoAction_Object2(0x29,API.OFF_ACT_GeneralObject_route0,{ 3463 },50,WPOINT.new(3412,3484,0))
@@ -200,12 +177,7 @@ function passo_falarComDrezelPreso()
     return true -- Placeholder
 end
 
---[[
-    Objetivo: Descer para o andar inferior do templo.
-    Ações:
-        - Clicar na escada para descer.
-    Retorno: true se bem-sucedido, false caso contrário.
-]]
+
 function passo_descerAndarInferiorTemplo()
     print("Passo: Descendo para o andar inferior do templo.")
     API.DoAction_Object2(0x35,API.OFF_ACT_GeneralObject_route0,{ 102048 },50,WPOINT.new(3407,3483,0))
@@ -213,14 +185,6 @@ function passo_descerAndarInferiorTemplo()
     return true -- Placeholder
 end
 
---[[
-    Objetivo: Matar um monge de Zamorak para obter a golden key.
-    Ações:
-        - Localizar um "Monk of Zamorak".
-        - Engajar combate e matá-lo.
-        - Pegar a "golden key" do chão (looting).
-    Retorno: true se bem-sucedido, false caso contrário.
-]]
 function passo_matarMongeZamorakEMegastarChave()
     print("Passo: Matando monge de Zamorak e pegando a golden key.")
     API.DoAction_NPC(0x2a,API.OFF_ACT_AttackNPC_route,{ 1044 },50)
@@ -232,14 +196,7 @@ function passo_matarMongeZamorakEMegastarChave()
     return true -- Placeholder
 end
 
---[[
-    Objetivo: Ir para o Mausoléu para trocar a chave.
-    Ações:
-        - Sair do templo.
-        - Descer a escada para o Mausoléu.
-        - Atravessar o portão onde Cerberus estava.
-    Retorno: true se bem-sucedido, false caso contrário.
-]]
+
 function passo_irParaMausoleuTrocarChave()
     print("Passo: Indo para o Mausoléu para trocar a chave.")
     API.DoAction_Object2(0x35,API.OFF_ACT_GeneralObject_route0,{ 102047 },50,WPOINT.new(3414,3480,0));
@@ -254,14 +211,7 @@ function passo_irParaMausoleuTrocarChave()
     return true -- Placeholder
 end
 
---[[
-    Objetivo: Encontrar o monumento com a iron key e trocar as chaves.
-    Ações:
-        - Clicar nos monumentos para "Study" até encontrar o correto.
-        - Usar a "golden key" no monumento para trocá-la pela "iron key".
-        - (Requisito: Ter um balde no inventário).
-    Retorno: true se bem-sucedido, false caso contrário.
-]]
+
 function passo_encontrarEtrocarChaves()
     print("Passo: Encontrando e trocando as chaves no Mausoléu.")
     API.DoAction_Object2(0x32,API.OFF_ACT_GeneralObject_route0,{ 3496 },50,WPOINT.new(6687,4300,0));
@@ -302,13 +252,6 @@ function passo_encontrarEtrocarChaves()
     return true -- Placeholder
 end
 
---[[
-    Objetivo: Encher o balde com a água do Rio Salve.
-    Ações:
-        - Ir para o poço no centro dos monumentos.
-        - Usar o "Bucket" no poço para obter "Bucket of murky water".
-    Retorno: true se bem-sucedido, false caso contrário.
-]]
 function passo_encherBaldeAguaMurky()
     print("Passo: Enchendo o balde com água murky.")
     Inventory:DoAction(1925,0,API.API.OFF_ACT_Bladed_interface_route)
@@ -317,16 +260,7 @@ function passo_encherBaldeAguaMurky()
     return true -- Placeholder
 end
 
--- PARTE 3: Saradomin's Blessing
 
---[[
-    Objetivo: Voltar para a cela de Drezel com a iron key.
-    Ações:
-        - Subir do Mausoléu.
-        - Entrar no templo.
-        - Subir para o andar superior.
-    Retorno: true se bem-sucedido, false caso contrário.
-]]
 function passo_voltarParaDrezelComChave()
     print("Passo: Voltando para Drezel com a chave.")
     QUEST.MoveTo(6667, 4310, 0, 5)
@@ -344,14 +278,7 @@ function passo_voltarParaDrezelComChave()
     return true -- Placeholder
 end
 
---[[
-    Objetivo: Abrir a cela de Drezel e falar com ele.
-    Ações:
-        - Usar a "iron key" na porta da cela.
-        - Entrar na cela.
-        - Falar com Drezel.
-    Retorno: true se bem-sucedido, false caso contrário.
-]]
+
 function passo_abrirCelaDrezelEFalar()
     print("Passo: Abrindo a cela de Drezel e falando com ele.")
     API.DoAction_Object2(0x29,API.OFF_ACT_GeneralObject_route0,{ 3463 },50,WPOINT.new(3412,3484,0));
@@ -369,13 +296,7 @@ print("Passo: Abençoando a água.")
 return true -- Placeholder
 end
 
---[[
-    Objetivo: Usar o "Bucket of blessed water" no caixão de Morytania.
-    Ações:
-        - Clicar no "Morytania coffin".
-        - Usar o "Bucket of blessed water" nele.
-    Retorno: true se bem-sucedido, false caso contrário.
-]]
+
 function passo_usarAguaNoCaixao()
 print("Passo: Usando a água abençoada no caixão.")
     Inventory:DoAction(2954,0,API.API.OFF_ACT_Bladed_interface_route)
@@ -383,13 +304,7 @@ print("Passo: Usando a água abençoada no caixão.")
 return true -- Placeholder
 end
 
---[[
-    Objetivo: Falar com Drezel após selar o caixão.
-    Ações:
-        - Clicar em Drezel.
-        - Progredir no diálogo onde ele pede para você encontrá-lo no Mausoléu.
-    Retorno: true se bem-sucedido, false caso contrário.
-]]
+
 function passo_falarComDrezelDepoisCaixao()
 print("Passo: Falando com Drezel depois de selar o caixão.")
     API.DoAction_Object2(0x29,API.OFF_ACT_GeneralObject_route0,{ 3463 },50,WPOINT.new(3412,3484,0));
@@ -399,13 +314,7 @@ print("Passo: Falando com Drezel depois de selar o caixão.")
 return true -- Placeholder
 end
 
---[[
-    Objetivo: Ir para a sala dos monumentos no Mausoléu e falar com Drezel.
-    Ações:
-        - Descer do templo para o Mausoléu (sala dos monumentos).
-        - Encontrar e falar com Drezel lá.
-    Retorno: true se bem-sucedido, false caso contrário.
-]]
+
 function passo_irParaSalaMonumentosFalarDrezel()
 print("Passo: Indo para a sala dos monumentos e falando com Drezel.")
     API.DoAction_Object2(0x29,API.OFF_ACT_GeneralObject_route0,{ 3463 },50,WPOINT.new(3412,3484,0));
@@ -418,33 +327,11 @@ print("Passo: Indo para a sala dos monumentos e falando com Drezel.")
 return true -- Placeholder
 end
 
---[[
-    Objetivo: Dar as essências para Drezel.
-    Ações:
-        - Falar com Drezel.
-        - Entregar 50 rune essence ou 25 pure essence (pode ser em múltiplas viagens).
-        - Lógica para lidar com inventário e múltiplos itens (se necessário).
-    Retorno: true se bem-sucedido, false caso contrário.
-]]
+
 function passo_darEssenciaParaDrezel()
 print("Passo: Dando as essências para Drezel.")
--- Exemplo de lógica:
--- interagirNPC("Drezel") -- para abrir o diálogo de doação
--- Se a lógica permitir múltiplas doações:
--- local essenciaTotalNecessaria = 50 -- ou 25
--- local essenciaEntregue = 0
--- while essenciaEntregue < essenciaTotalNecessaria do
---     local essenciaNoInventario = getItemQuantidade("Rune essence") -- ou Pure essence
---     if essenciaNoInventario == 0 then
---         print("Não há essência suficiente no inventário. Recarregando...")
---         -- Lógica para ir ao banco/teleportar/etc.
---         -- if not recarregarEssencia() then return false end
---         -- continue
---     end
---     local paraDoar = math.min(essenciaNoInventario, essenciaTotalNecessaria - essenciaEntregue)
---     doarItem("Rune essence", paraDoar) -- Função para doar itens
---     essenciaEntregue = essenciaEntregue + paraDoar
---     esperar(2000) -- Pequena pausa para o jogo processar
--- end
+    API.DoAction_NPC(0x2c,API.OFF_ACT_InteractNPC_route,{ 1049 },50)
+    pulardialogos()
+    API.DoAction_Interface(0xffffffff,0xffffffff,1,1244,21,-1,API.OFF_ACT_GeneralInterface_route)
 return true -- Placeholder
 end
