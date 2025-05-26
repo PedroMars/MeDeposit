@@ -3,7 +3,7 @@ local API = require("api")
 local QUEST = require("recurso.quest")
 
 -- Função principal que orquestra toda a missão
-function iniciarMissaoAMissingMonk()
+local function iniciarMissaoAMissingMonk()
     print("Iniciando a missão 'A Missing Monk'...")
 
     -- Parte 1: A Missing Monk
@@ -73,7 +73,7 @@ local function passo_falarComReiRoaldPrimeiraVez()
 end
 
 
-function passo_irParaPaterdomus()
+local function passo_irParaPaterdomus()
     QUEST.MoveTo(3258, 3440, 0, 5)
     QUEST.MoveTo(3273, 3428, 0, 5)
     QUEST.MoveTo(3319, 3430, 0, 5)
@@ -83,14 +83,14 @@ function passo_irParaPaterdomus()
 end
 
 
-function passo_interagirComPortaTemplo()
+local function passo_interagirComPortaTemplo()
     API.DoAction_Object2(0x39,API.OFF_ACT_GeneralObject_route0,{ 30707 },50,WPOINT.new(3404,3486,0))
     API.RandomSleep2(4000, 2000, 3000)
     QUEST.OptionSelector({"Knock at the door."})
     return true -- Placeholder
 end
 
-function passo_falarComVozTemplo()
+local function passo_falarComVozTemplo()
     pulardialogos()
     QUEST.OptionSelector({"Roald sent me to check on Drezel."})
     pulardialogos()
@@ -99,14 +99,14 @@ function passo_falarComVozTemplo()
     return true -- Placeholder
 end
 
-function passo_descerMausoleuCerberus()
+local function passo_descerMausoleuCerberus()
     QUEST.MoveTo(3406, 3505, 0, 5)
     API.DoAction_Object2(0x39,API.OFF_ACT_GeneralObject_route0,{ 30571 },50,WPOINT.new(3405,3505,0))
 
     return true -- Placeholder
 end
 
-function passo_matarCerberus()
+local function passo_matarCerberus()
 
     API.DoAction_NPC(0x2a,API.OFF_ACT_AttackNPC_route,{ ids },50)
     API.RandomSleep2(4000, 2000, 3000)
@@ -115,19 +115,19 @@ function passo_matarCerberus()
     return true -- Placeholder
 end
 
-function passo_voltarParaPortaTemploDepoisCerberus()
+local function passo_voltarParaPortaTemploDepoisCerberus()
     API.DoAction_Object2(0x34,API.OFF_ACT_GeneralObject_route0,{ 30575 },50,WPOINT.new(7821,3171,0))
     QUEST.MoveTo(3402, 3485, 0, 5)
     return true -- Placeholder
 end
 
-function passo_falarComVozTemploDepoisCerberus()
-    self:passo_interagirComPortaTemplo()
+local function passo_falarComVozTemploDepoisCerberus()
+    passo_interagirComPortaTemplo()
     pulardialogos()
     return true -- Placeholder
 end
 
-function passo_voltarParaReiRoald()
+local function passo_voltarParaReiRoald()
     Inventory:DoAction(8007,1,API.OFF_ACT_GeneralInterface_route)
     API.RandomSleep2(7000, 2000, 3000)
     QUEST.MoveTo(3217, 3472, 0, 2)
@@ -136,7 +136,7 @@ function passo_voltarParaReiRoald()
     return true -- Placeholder
 end
 
-function passo_falarComReiRoaldSegundaVez()
+local function passo_falarComReiRoaldSegundaVez()
     print("Passo: Falando com o Rei Roald pela segunda vez.")
     API.DoAction_NPC(0x2c,API.OFF_ACT_InteractNPC_route,{ 648 },50)
     API.RandomSleep2(4000, 2000, 3000)
@@ -148,15 +148,15 @@ end
 
 -- PARTE 2: The Temple on the Salve
 
-function passo_voltarParaTemploPaterdomus()
+local function passo_voltarParaTemploPaterdomus()
     print("Passo: Voltando para o templo de Paterdomus e entrando.")
-    self:passo_irParaPaterdomus()
+    passo_irParaPaterdomus()
     API.DoAction_Object2(0x39,API.OFF_ACT_GeneralObject_route0,{ 30707 },50,WPOINT.new(3404,3486,0))
     return true -- Placeholder
 end
 
 
-function passo_subirAndarSuperiorTemplo()
+local function passo_subirAndarSuperiorTemplo()
     print("Passo: Subindo para o andar superior do templo.")
     API.RandomSleep2(4000, 2000, 3000)
     API.DoAction_Object2(0x34,API.OFF_ACT_GeneralObject_route0,{ 102043 },50,WPOINT.new(3414,3490,0))
@@ -166,7 +166,7 @@ function passo_subirAndarSuperiorTemplo()
     return true -- Placeholder
 end
 
-function passo_falarComDrezelPreso()
+local function passo_falarComDrezelPreso()
     print("Passo: Falando com o Drezel preso.")
     API.DoAction_Object2(0x29,API.OFF_ACT_GeneralObject_route0,{ 3463 },50,WPOINT.new(3412,3484,0))
     pulardialogos()
@@ -178,14 +178,14 @@ function passo_falarComDrezelPreso()
 end
 
 
-function passo_descerAndarInferiorTemplo()
+local function passo_descerAndarInferiorTemplo()
     print("Passo: Descendo para o andar inferior do templo.")
     API.DoAction_Object2(0x35,API.OFF_ACT_GeneralObject_route0,{ 102048 },50,WPOINT.new(3407,3483,0))
     API.RandomSleep2(4000, 2000, 3000)
     return true -- Placeholder
 end
 
-function passo_matarMongeZamorakEMegastarChave()
+local function passo_matarMongeZamorakEMegastarChave()
     print("Passo: Matando monge de Zamorak e pegando a golden key.")
     API.DoAction_NPC(0x2a,API.OFF_ACT_AttackNPC_route,{ 1044 },50)
     API.RandomSleep2(4000, 2000, 3000)
@@ -197,7 +197,7 @@ function passo_matarMongeZamorakEMegastarChave()
 end
 
 
-function passo_irParaMausoleuTrocarChave()
+local function passo_irParaMausoleuTrocarChave()
     print("Passo: Indo para o Mausoléu para trocar a chave.")
     API.DoAction_Object2(0x35,API.OFF_ACT_GeneralObject_route0,{ 102047 },50,WPOINT.new(3414,3480,0));
     API.RandomSleep2(4000, 3000, 2000)
@@ -212,7 +212,7 @@ function passo_irParaMausoleuTrocarChave()
 end
 
 
-function passo_encontrarEtrocarChaves()
+local function passo_encontrarEtrocarChaves()
     print("Passo: Encontrando e trocando as chaves no Mausoléu.")
     API.DoAction_Object2(0x32,API.OFF_ACT_GeneralObject_route0,{ 3496 },50,WPOINT.new(6687,4300,0));
     API.RandomSleep2(1000, 1000, 2000)
@@ -252,7 +252,7 @@ function passo_encontrarEtrocarChaves()
     return true -- Placeholder
 end
 
-function passo_encherBaldeAguaMurky()
+local function passo_encherBaldeAguaMurky()
     print("Passo: Enchendo o balde com água murky.")
     Inventory:DoAction(1925,0,API.API.OFF_ACT_Bladed_interface_route)
     API.RandomSleep2(500, 500, 200)
@@ -261,7 +261,7 @@ function passo_encherBaldeAguaMurky()
 end
 
 
-function passo_voltarParaDrezelComChave()
+local function passo_voltarParaDrezelComChave()
     print("Passo: Voltando para Drezel com a chave.")
     QUEST.MoveTo(6667, 4310, 0, 5)
     API.DoAction_Object2(0x31,API.OFF_ACT_GeneralObject_route0,{ 3444 },50,WPOINT.new(6669,4311,0))
@@ -279,7 +279,7 @@ function passo_voltarParaDrezelComChave()
 end
 
 
-function passo_abrirCelaDrezelEFalar()
+local function passo_abrirCelaDrezelEFalar()
     print("Passo: Abrindo a cela de Drezel e falando com ele.")
     API.DoAction_Object2(0x29,API.OFF_ACT_GeneralObject_route0,{ 3463 },50,WPOINT.new(3412,3484,0));
     API.RandomSleep2(500, 500, 200)
@@ -287,7 +287,7 @@ function passo_abrirCelaDrezelEFalar()
     return true -- Placeholder
 end
 
-function passo_abencoarAgua()
+local function passo_abencoarAgua()
 print("Passo: Abençoando a água.")
     API.DoAction_Object2(0x29,API.OFF_ACT_GeneralObject_route0,{ 3463 },50,WPOINT.new(3412,3484,0));
     API.RandomSleep2(500, 500, 200)
@@ -297,7 +297,7 @@ return true -- Placeholder
 end
 
 
-function passo_usarAguaNoCaixao()
+local function passo_usarAguaNoCaixao()
 print("Passo: Usando a água abençoada no caixão.")
     Inventory:DoAction(2954,0,API.API.OFF_ACT_Bladed_interface_route)
     API.DoAction_Object2(0x24,API.OFF_ACT_GeneralObject_route00,{ 30728 },50,WPOINT.new(3410,3485,0));
@@ -305,7 +305,7 @@ return true -- Placeholder
 end
 
 
-function passo_falarComDrezelDepoisCaixao()
+local function passo_falarComDrezelDepoisCaixao()
 print("Passo: Falando com Drezel depois de selar o caixão.")
     API.DoAction_Object2(0x29,API.OFF_ACT_GeneralObject_route0,{ 3463 },50,WPOINT.new(3412,3484,0));
     API.RandomSleep2(500, 500, 200)
@@ -315,10 +315,10 @@ return true -- Placeholder
 end
 
 
-function passo_irParaSalaMonumentosFalarDrezel()
+local function passo_irParaSalaMonumentosFalarDrezel()
 print("Passo: Indo para a sala dos monumentos e falando com Drezel.")
     API.DoAction_Object2(0x29,API.OFF_ACT_GeneralObject_route0,{ 3463 },50,WPOINT.new(3412,3484,0));
-    self:passo_irParaMausoleuTrocarChave()
+    passo_irParaMausoleuTrocarChave()
     API.DoAction_Object2(0x31,API.OFF_ACT_GeneralObject_route0,{ 3444 },50,WPOINT.new(13773,4887,0));
     API.RandomSleep2(4000, 3000, 2000)
     QUEST.MoveTo(13791, 4882, 0, 5)
@@ -328,10 +328,13 @@ return true -- Placeholder
 end
 
 
-function passo_darEssenciaParaDrezel()
+local function passo_darEssenciaParaDrezel()
 print("Passo: Dando as essências para Drezel.")
     API.DoAction_NPC(0x2c,API.OFF_ACT_InteractNPC_route,{ 1049 },50)
     pulardialogos()
     API.DoAction_Interface(0xffffffff,0xffffffff,1,1244,21,-1,API.OFF_ACT_GeneralInterface_route)
 return true -- Placeholder
 end
+
+-- Chamada da função principal para iniciar o script
+iniciarMissaoAMissingMonk()
