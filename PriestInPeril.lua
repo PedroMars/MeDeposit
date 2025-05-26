@@ -1,45 +1,5 @@
 local API = require("api")
-
 local QUEST = require("recurso.quest")
-
--- Função principal que orquestra toda a missão
-local function iniciarMissaoAMissingMonk()
-    print("Iniciando a missão 'A Missing Monk'...")
-
-    -- Parte 1: A Missing Monk
-    if not passo_falarComReiRoaldPrimeiraVez() then return false end
-    if not passo_irParaPaterdomus() then return false end
-    if not passo_interagirComPortaTemplo() then return false end
-    if not passo_falarComVozTemplo() then return false end
-    if not passo_descerMausoleuCerberus() then return false end
-    if not passo_matarCerberus() then return false end
-    if not passo_voltarParaPortaTemploDepoisCerberus() then return false end
-    if not passo_falarComVozTemploDepoisCerberus() then return false end
-    if not passo_voltarParaReiRoald() then return false end
-    if not passo_falarComReiRoaldSegundaVez() then return false end
-
-    -- Parte 2: The Temple on the Salve
-    if not passo_voltarParaTemploPaterdomus() then return false end
-    if not passo_subirAndarSuperiorTemplo() then return false end
-    if not passo_falarComDrezelPreso() then return false end
-    if not passo_descerAndarInferiorTemplo() then return false end
-    if not passo_matarMongeZamorakEMegastarChave() then return false end
-    if not passo_irParaMausoleuTrocarChave() then return false end
-    if not passo_encontrarEtrocarChaves() then return false end
-    if not passo_encherBaldeAguaMurky() then return false end
-
-    -- Parte 3: Saradomin's Blessing
-    if not passo_voltarParaDrezelComChave() then return false end
-    if not passo_abrirCelaDrezelEFalar() then return false end
-    if not passo_abencoarAgua() then return false end
-    if not passo_usarAguaNoCaixao() then return false end
-    if not passo_falarComDrezelDepoisCaixao() then return false end
-    if not passo_irParaSalaMonumentosFalarDrezel() then return false end
-    if not passo_darEssenciaParaDrezel() then return false end
-
-    print("Missão 'A Missing Monk' concluída com sucesso!")
-    return true
-end
 
 ------------------------------------------------------------------------------------------------------------------------
 -- FUNÇÕES DE CADA PASSO DA MISSÃO
@@ -334,6 +294,47 @@ print("Passo: Dando as essências para Drezel.")
     API.DoAction_Interface(0xffffffff,0xffffffff,1,1244,21,-1,API.OFF_ACT_GeneralInterface_route)
 return true -- Placeholder
 end
+
+
+-- Função principal que orquestra toda a missão
+local function iniciarMissaoAMissingMonk()
+    print("Iniciando a missão 'A Missing Monk'...")
+
+    -- Parte 1: A Missing Monk
+    if not passo_falarComReiRoaldPrimeiraVez() then return false end
+    if not passo_irParaPaterdomus() then return false end
+    if not passo_interagirComPortaTemplo() then return false end
+    if not passo_falarComVozTemplo() then return false end
+    if not passo_descerMausoleuCerberus() then return false end
+    if not passo_matarCerberus() then return false end
+    if not passo_voltarParaPortaTemploDepoisCerberus() then return false end
+    if not passo_falarComVozTemploDepoisCerberus() then return false end
+    if not passo_voltarParaReiRoald() then return false end
+    if not passo_falarComReiRoaldSegundaVez() then return false end
+
+    -- Parte 2: The Temple on the Salve
+    if not passo_voltarParaTemploPaterdomus() then return false end
+    if not passo_subirAndarSuperiorTemplo() then return false end
+    if not passo_falarComDrezelPreso() then return false end
+    if not passo_descerAndarInferiorTemplo() then return false end
+    if not passo_matarMongeZamorakEMegastarChave() then return false end
+    if not passo_irParaMausoleuTrocarChave() then return false end
+    if not passo_encontrarEtrocarChaves() then return false end
+    if not passo_encherBaldeAguaMurky() then return false end
+
+    -- Parte 3: Saradomin's Blessing
+    if not passo_voltarParaDrezelComChave() then return false end
+    if not passo_abrirCelaDrezelEFalar() then return false end
+    if not passo_abencoarAgua() then return false end
+    if not passo_usarAguaNoCaixao() then return false end
+    if not passo_falarComDrezelDepoisCaixao() then return false end
+    if not passo_irParaSalaMonumentosFalarDrezel() then return false end
+    if not passo_darEssenciaParaDrezel() then return false end
+
+    print("Missão 'A Missing Monk' concluída com sucesso!")
+    return true
+end
+
 
 -- Chamada da função principal para iniciar o script
 iniciarMissaoAMissingMonk()
