@@ -68,7 +68,8 @@ end
 
 local function passo_matarCerberus()
 
-    API.DoAction_NPC(0x2a,API.OFF_ACT_AttackNPC_route,{ ids },50)
+
+    API.DoAction_NPC(0x2a,API.OFF_ACT_AttackNPC_route,{ 15255 },50)
     API.RandomSleep2(4000, 2000, 3000)
 
     --apos o fim da quest voltar para pegar id do cachorro
