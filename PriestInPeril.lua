@@ -214,9 +214,6 @@ local function interfaces(options)
     }
 end
 
--- Exemplo de uso:
-
--- Função modificada para retornar true/false e, opcionalmente, imprimir os resultados
 local function buscar_palavra(keywordToSearch)
     local result = interfaces({
         startPath = { { 272,4,-1,0 }, { 272,6,-1,0 } },
