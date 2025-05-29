@@ -25,8 +25,8 @@ local UI_BOX_HEIGHT = 130
 local UI_BOX_START_Y = 600
 local UI_BOX_END_Y = UI_BOX_START_Y + UI_BOX_HEIGHT
 local UI_BOX_END_X = UI_MARGIN + UI_BOX_WIDTH + (2 * UI_PADDING_X)
-local UI_BUTTON_WIDTH = 120 -- Aumentado para acomodar o texto
-local UI_BUTTON_HEIGHT = 30 -- Ligeiramente aumentado para melhor visual
+local UI_BUTTON_WIDTH = 70
+local UI_BUTTON_HEIGHT = 25
 local UI_BUTTON_MARGIN = 8
 
 -- Função para inicializar os elementos da UI
@@ -34,6 +34,7 @@ function PriestInPerilUI:InitializeUI()
     API.Log("Initializing UI elements for Priest in Peril", "debug")
 
     -- Mapear os passos da missão para o dropdown usando a ordem definida em PriestInPeril.stepOrder
+    -- Esta linha garante que a ordem do dropdown seja a mesma de PriestInPeril.stepOrder
     uiState.sortedStepKeys = PriestInPeril.stepOrder
 
     -- Fundo da GUI
@@ -55,8 +56,7 @@ function PriestInPerilUI:InitializeUI()
     -- Botão de Iniciar
     uiState.startButton = API.CreateIG_answer()
     uiState.startButton.box_name = "Start Mission"
-    -- Ajuste a posição X para centralizar o botão, caso o tamanho mude muito
-    uiState.startButton.box_start = FFPOINT.new(UI_MARGIN + UI_PADDING_X + (UI_BOX_WIDTH / 2) - (UI_BUTTON_WIDTH / 2), UI_BOX_START_Y + UI_PADDING_Y + 40, 0)
+    uiState.startButton.box_start = FFPOINT.new(UI_MARGIN + UI_PADDING_X + 120, UI_BOX_START_Y + UI_PADDING_Y + 40, 0)
     uiState.startButton.box_size = FFPOINT.new(UI_BUTTON_WIDTH, UI_BUTTON_HEIGHT, 0)
     uiState.startButton.colour = ImColor.new(160, 255, 0)
 
